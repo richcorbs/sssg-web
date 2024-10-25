@@ -1,0 +1,89 @@
+---
+layout: ssss.html
+---
+<div id="app" class="container compact"></div>
+
+<script>
+  const {br, button, div, h1, h2, input, label, main, p, section, span} = van.tags
+
+
+  const App = () => {
+    // let domains = van.state([ van.state('doodoo.com'), van.state('example.org')])
+    let domains = van.state([])
+    let newDomain = van.state('')
+    let secret = van.state('abcdef')
+
+    const getDomains = async () => {
+      const response = await fetch(`https://localhost/list-domains?secret=${secret.val}`)
+      json = await response.json()
+      domains.val = json.domains.map(domain => van.state(domain))
+    }
+
+    getDomains()
+
+    const addDomain = async () => {
+      console.log("Add " + newDomain.val)
+      const resp = await fetch(`https://localhost/add-domain?secret=${secret.val}&domain=${newDomain.val}`, {method: 'POST'})
+      getDomains()
+    }
+    const deleteDomain = async (domain, index) => {
+      console.log("Delete " + domain.val)
+      const resp = await fetch(`https://localhost/delete-domain?secret=${secret.val}&domain=${domain.val}`, {method: 'POST'})
+      getDomains()
+    }
+    const disableDomain = async (domain, index) => {
+      if (domain.val.includes("-DISABLED")) return
+      console.log("Disable " + domain.val)
+      const resp = await fetch(`https://localhost/disable-domain?secret=${secret.val}&domain=${domain.val}`, {method: 'POST'})
+      getDomains()
+      // domain.val = `${domain.val}-DISABLED`
+      // domains.val[index] = domains.val[index]
+    }
+
+    const enableDomain = async (domain, index) => {
+      if (!domain.val.includes("-DISABLED")) return
+      console.log("Enable " + domain.val)
+      const resp = await fetch(`https://localhost/enable-domain?secret=${secret.val}&domain=${domain.val}`, {method: 'POST'})
+      getDomains()
+      // domain.val = domain.val.replace("-DISABLED", "")
+      // domains.val[index] = domains.val[index]
+    }
+
+    return div(
+      { class: "container" },
+      h1("Admin"),
+      section(
+        { class: "grid", style: "margin-bottom: 24px" },
+        input({ type: "text", placeholder: "Add a domain...", value: () => newDomain.val, oninput: (e) => newDomain.val = e.target.value }),
+        div(
+          button({ class: "secondary outline", onclick: () => addDomain() }, "Add domain"),
+        )
+      ),
+      h2("Domains"),
+      () => main(domains.val.map((domain, index) => section(
+        { class: "grid compact" },
+        input({ type: "text", value: () => domains.val[index] && domains.val[index].val }),
+        div(
+          { role: "group" },
+          button({ class: "secondary outline", onclick: () => {alert("Update " + domain)} }, "Update"),
+          " ",
+          button({ class: "secondary outline", disabled: () => domain.val.includes("-DISABLED"), onclick: () => disableDomain(domain, index) }, "Disable"),
+          " ",
+          button({ class: "secondary outline", disabled: () => !domain.val.includes("-DISABLED"), onclick: () => enableDomain(domain, index) }, "Enable"),
+          " ",
+          button({ class: "secondary outline", onclick: () => deleteDomain(domain, index) }, "Delete")
+        )
+      ))),
+      div(
+        { class: "grid", style: "margin-top: 32px" },
+        div(
+          label("Secret: "),
+          input({ type: "text", value: () => secret.val, placeholder: "Secret", oninput: (e) => secret.val = e.target.value }),
+        ),
+        div()
+      )
+    )
+  }
+
+  van.add(app, App())
+</script>
