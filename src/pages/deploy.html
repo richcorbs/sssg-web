@@ -1,71 +1,74 @@
 <DefaultLayout>
-  <main class="container">
-    <section>
-      <h2>Deployment</h2>
-
-      <p style="width: 45ch">
-        This page contains instructions for deploying your website to our
-        server. Yes, you can host your static website on our server!
+  <section class="grid" style="--pico-grid-column-gap: 4rem">
+    <div style="--c: 1">
+      <h1 style="margin-top: 8rem; text-wrap: balance">
+        There are two ways to deploy your site.
+      </h1>
+    </div>
+    <div style="--c: 1">
+      <img src="/assets/images/launch.svg" alt="" />
+    </div>
+  </section>
+  <section class="grid">
+    <article>
+      <h4>1. Deploy to our servers</h4>
+      <p>
+        Deploying to our servers is the easiest way to get your site online. It
+        involves a single command:<br />
+        <code>sssg --deploy [optional-domain-name]</code>.
       </p>
-
-      <p style="width: 45ch">
-        It's a little complicated behind the scenes, but we'll try to explain it
-        clearly so that you are comfortable trusting us with your website.
-      </p>
-
-      <p style="width: 45ch">
-        Of course, if you want to host your own website, you can do that too. Go
-        <a href="/self-hosting.html">here</a> for instructions on how to do
-        that.
-      </p>
-
-      <div class="grid-2">
-        <span class="grid-2__number">1.</span>
-
-        <p class="u-smaller">
-          Download the sssg binary from <a href="/releases.html">here</a>.
-        </p>
-        <p class="u-smaller">
-          This is the only dependency. You'll need the right version for your
-          platform (Windows, Mac, Linux, etc).
-        </p>
+      <ul>
+        <li>TODO: Include about deploying to staging or production.</li>
+        <li>
+          <p>
+            If you want to use a <b>custom domain name</b>, run:<br />
+            <code>sssg --deploy www.my-custom-domain.com</code>.<br />
+            In order for SSL to work properly, you must point your DNS at our
+            servers for the custom domain name that you choose. The IP address
+            is
+            <code>1.1.1.1</code>.
+          </p>
+        </li>
+        <li>
+          <p>
+            If you want to use <b>a subdomain of your choosing</b>, run:<br />
+            <code>sssg --deploy my-subdomain.sssg.dev</code><br />
+            where
+            <code>my-subdomain</code> is something you want to use. All
+            subdomains are on the <code>sssg.dev</code> domain.
+          </p>
+        </li>
+        <li>
+          <p>
+            If you want to use a <b>random subdomain</b>, run:<br />
+            <code>sssg --deploy</code> and we'll create a subdomain for you.
+          </p>
+        </li>
+      </ul>
+    </article>
+    <article>
+      <div>
+        <h4>2. Manually build and deploy</h4>
+        <p>First you'll have to build the site locally. And then you can deploy it however you like.</p>
+        <ul>
+          <li>
+            Run <code>sssg --build</code> in your project directory to build your
+            site locally in the <code>./dist</code> directory.
+          </li>
+          <li>
+            <p>
+              Run a script of your creation to copy/upload the contents of the
+              <code>./dist</code> directory to the appropriate directory on your
+              server/host.
+            </p>
+          </li>
+          <li
+            <p>
+              You can use scp, rsync, ftp, or any other method that you prefer.
+            </p>
+          </li>
+        </ul>
       </div>
-
-      <div class="grid-2">
-        <span class="grid-2__number">2.</span>
-
-        <p class="u-smaller">
-          Download the sssg binary from <a href="/releases.html">here</a>.
-        </p>
-        <p class="u-smaller">
-          This is the only dependency. You'll need the right version for your
-          platform (Windows, Mac, Linux, etc).
-        </p>
-      </div>
-
-      <div class="grid-2">
-        <span class="grid-2__number">3.</span>
-
-        <p class="u-smaller">
-          Download the sssg binary from <a href="/releases.html">here</a>.
-        </p>
-        <p class="u-smaller">
-          This is the only dependency. You'll need the right version for your
-          platform (Windows, Mac, Linux, etc).
-        </p>
-      </div>
-
-      <div class="grid-2">
-        <span class="grid-2__number">4.</span>
-
-        <p class="u-smaller">
-          Download the sssg binary from <a href="/releases.html">here</a>.
-        </p>
-        <p class="u-smaller">
-          This is the only dependency. You'll need the right version for your
-          platform (Windows, Mac, Linux, etc).
-        </p>
-      </div>
-    </section>
-  </main>
+    </article>
+  </section>
 </DefaultLayout>

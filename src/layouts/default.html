@@ -1,34 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html class="gridlines" data-theme="light">
+  <head>
+    <title>SSSG</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/assets/css/open-props.min.css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/assets/css/buttons.min.css"
+    />
 
-<head>
-  <title>SSSG</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link rel="stylesheet" href="/assets/css/pico.min.css" />
-  <link rel="stylesheet" href="/assets/css/pico.colors.min.css" />
-  <link href="/assets/css/custom.css" rel="stylesheet">
-  <script type="text/javascript"
-    src="https://cdn.jsdelivr.net/gh/vanjs-org/van/public/van-1.2.8.nomodule.min.js"></script>
-</head>
+    <link href="/assets/css/custom.css" rel="stylesheet" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/gh/vanjs-org/van/public/van-1.2.8.nomodule.min.js"
+    ></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+  </head>
 
-<body>
-  <header class="container">
-    <nav>
-      <ul>
-        <li>
-          <h4 class="brand-700" style="letter-spacing: 0.05em;font-family: 'Wendy One';">simple</h4>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <body>
+    <header class="container">
+      <nav>
+        <ul>
+          <li class="brand">
+            <a href="/">simple</a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a href="https://open-props.style" target="_blank">Open Props</a>
+          </li>
+          <li>
+            <a href="https://alpinejs.dev" target="_blank">Alpine JS</a>
+          </li>
+          <li>
+            <a href="https://vanjs.org" target="_blank">VanJS</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-  <div class="p-16">
-    <slot></slot>
-  </div>
+    <main class="container">
+      <slot></slot>
+    </main>
 
-  <footer class="l-footer">
-    <h3 class="l-footer__heading" style="">simple, 2024</h3>
-  </footer>
-</body>
-
+    <footer class="container">
+      <h4>simple, 2024</h4>
+    </footer>
+  </body>
 </html>
