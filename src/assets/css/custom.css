@@ -1,10 +1,10 @@
 :root {
   --brand-light: var(--violet-3);
-  --brand-dark: var(--violet-6);
+  --brand-dark: var(--violet-5);
   --accent-light: var(--green-3);
   --accent-dark: var(--green-6);
-  --brand-light-contrast: var(--gray-0);
-  --brand-dark-contrast: var(--violet-2);
+  --brand-light-contrast: var(--violet-5);
+  --brand-dark-contrast: var(--violet-3);
   --surface-2: var(--gray-1);
   --brand: var(--brand-light);
   --brand-contrast: var(--brand-light-contrast);
@@ -79,7 +79,6 @@ main {
   gap: var(--size-8);
   max-width: fit-content;
   margin-block-start: var(--size-8);
-  margin-inline: auto;
 }
 
 :where(.flex) {
@@ -138,7 +137,7 @@ main {
 
 :where(section.hero h3 code),
 :where(section.hero h3) {
-  color: var(--text-1);
+  color: var(--text-2);
   display: inline-block;
   font-weight: var(--font-weight-1);
   line-height: var(--font-lineheight-2);
@@ -161,6 +160,8 @@ h4,
 h5,
 h6 {
   margin-block-end: var(--size-4);
+  margin-inline: auto;
+  text-align: center;
 }
 
 p {
