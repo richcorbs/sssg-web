@@ -283,34 +283,24 @@
           like so in your pages: <code>/assets/images/logo.png</code>.
         </p>
 
-        <div><code class="u-smaller">./src/snippets</code></div>
-        <p class="u-smaller">
-          This directory is where your reusable snippets of HTML go.
-          Subdirectories are supported. Name each snippet uniquely within the
-          project. If you name the file <code>MySnippet.html</code> then you can
-          include that snippet in your HTML using
-          <code>&lt;MySnippet&gt;&lt;/MySnippet&gt;</code>.
-        </p>
-
         <div><code class="u-smaller">./src/layouts</code></div>
         <div class="u-smaller">
           <p class="u-smaller">
             This is where you can create your own layouts. Be sure to include
-            <code>__CONTENT__</code> where you want your content placed in the
+            <code>&lt;slot&gt;&lt;/slot&gt;</code> where you want your content placed in the
             layout.
           </p>
           <p class="u-smaller">
-            To use a custom layout on a given page, include frontmatter like
-            this in the page where you want to use the custom layout:
+            To use a custom layout on a given page, wrap the page content in a tag
+            that matches the name of the layout file you want to use. For instance,
+            If you wanted to use the "Default" layout you would wrap your page content
+            in <code>&lt;Default&gt;&lt;/Default&gt;</code>.
           </p>
-          <pre class="l-pre u-smaller">
-  ---
-  layout: blog.html
-  ---
+<pre class="l-pre u-smaller">
+&lt;Default&gt;
   &lt;!-- The rest of your content goes here. --&gt;
-  </pre
-          >
-        </div>
+&lt;/Default&gt;</pre>
+</div>
 
         <div><code class="u-smaller">./src/pages</code></div>
         <div>
@@ -342,6 +332,16 @@
           └── Test.html</pre
           >
         </div>
+
+        <div><code class="u-smaller">./src/snippets</code></div>
+        <p class="u-smaller">
+          This directory is where your reusable snippets of HTML go.
+          Subdirectories are supported. Name each snippet uniquely within the
+          project. If you name the file <code>MySnippet.html</code> then you can
+          include that snippet in your HTML using
+          <code>&lt;MySnippet&gt;&lt;/MySnippet&gt;</code>.
+        </p>
+
       </div>
     </section>
   </main>
