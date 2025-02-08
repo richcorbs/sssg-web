@@ -6,26 +6,52 @@
 
   <section>
     <h2>How do I get started?</h2>
-    <div class="container just-for-gap">
-      <article>
-        <p>1. Download the binary from <a href="#">here</a>. This is the only dependency.</p>
-      </article>
-      <article>
-        <p>2. Run <code>sssg --init</code> to scaffold your new site in the current directory.</p>
-      </article>
-      <article>
-        <p>3. Run <code>sssg --dev</code> to start the dev server. It will tell you where your site is running.</p>
-      </article>
-      <article>
-        <p>4. Modify your content in the <code>./src</code> directory and your changes will be reflected in the browser immediately.</p>
-      </article>
-      <article>
-        <p>5. Run <code>sssg --register --domain &lt;domain&gt;</code> to choose where your site will run. This will reserve &lt;domain&gt; for your site AND create a "staging" subdomain for you on sssg.dev.</p>
-      </article>
-      <article>
-        <p>6. Run:<br><br><code>sssg --deploy --staging</code><br><br>or<br><br><code>sssg --deploy --production</code><br><br>to deploy your site to our server. Deploying to staging will not affect your production site.</p>
-        <p>If you do not want to deploy to our servers, run <code>sssg --build</code> and then manually deploy the <code>./dist</code> directory to your server.</p>
-      </article>
+    <div class="container">
+      <ol class="just-for-gap" style="margin-inline: auto; padding-inline: 0;">
+        <li class="card">
+          <p class="hanging-indent">1. Download the binary from <a href="#">here</a>. This is the only dependency.</p>
+        </li>
+        <li class="card">
+          <p class="hanging-indent">2. Run <code>sssg --init</code> to scaffold your new site in the current directory.</p>
+        </li>
+        <li class="card">
+          <p class="hanging-indent">3. Run <code>sssg --dev</code> to start the dev server. It will tell you where your site is running.</p>
+        </li>
+        <li class="card">
+          <p class="hanging-indent">4. Modify your content in the <code>./src</code> directory and your changes will be reflected in the browser immediately.</p>
+        </li>
+        <li class="card just-for-gap">
+          <p class="hanging-indent">
+            5. Run: <code>sssg --register &lt;domain&gt;</code>
+            <br><br>
+            where <code>&lt;domain&gt;</code> is the domain you want to deploy your site to.
+            <br><br>
+            The domain you choose can either be your own custom domain or a subdomain on sssg.dev
+            like <code>my-site.sssg.dev</code>.
+            If it is your own domain you'll need to create a CNAME record
+            pointing to www.sssg.dev.
+            <br><br>
+            When you register a domain we will also create a random staging domain for you.
+          </p>
+        </li>
+        <li class="card just-for-gap">
+          <p class="hanging-indent">
+            6. To deploy run:
+            <br><br>
+            <code>sssg --deploy --staging</code>
+            <br><br>
+            or
+            <br><br>
+            <code>sssg --deploy --production</code>
+            <br><br>
+            Deploying to staging will not affect your production site.
+            <br><br>
+            Go <a href="deploy.html">here</a> to learn more about deploying your site.
+            <br><br>
+            * If you do not want to deploy to our servers, run <code>sssg --build</code> and then manually deploy the <code>./dist</code> directory to your server.
+          </p>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -54,10 +80,6 @@
           </div>
           <div id="VanJsContainer"></div>
         </div>
-      </article>
-      <article>
-        <h4>Deploying your site:</h4>
-        <p>Go <a href="deploy.html">here</a> to learn about deploying your site.</article>
       </article>
     </div>
   </section>

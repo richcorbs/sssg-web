@@ -74,11 +74,14 @@ main {
   align-items: start;
 }
 
+:where(.grid article) {
+  height: 100%;
+}
+
 :where(.just-for-gap) {
   display: grid;
   gap: var(--size-8);
   max-width: fit-content;
-  margin-block-start: var(--size-8);
 }
 
 :where(.flex) {
@@ -87,23 +90,36 @@ main {
   align-items: center;
 }
 
-:where(article) {
+:where(article), .card {
   background: var(--surface-2);
   border: var(--border-size-1) solid var(--surface-3);
-  padding-block: var(--size-8) var(--size-6);
+  padding-block: var(--size-6) var(--size-6);
   padding-inline: var(--size-8);
   box-shadow: var(--shadow-3);
   border-radius: var(--radius-2);
   display: grid;
   align-items: start;
+  /* height: 100%; */
   max-width: calc(var(--size-content-3) + 2 * var(--size-8));
   /* height: 100%; */
   & :where(code) {
     --surface-2: var(--surface-3);
   }
+
+  & .hanging-indent {
+    text-indent: calc(-1 * var(--size-4));
+    padding-inline-start: var(--size-2);
+    margin-block-end: 0;
+  }
+
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-inline: 0;
+    text-align: left;
+  }
 }
 
-:where(article:hover) {
+:where(article:hover), .card:hover {
   box-shadow: var(--shadow-4);
 }
 
@@ -153,12 +169,7 @@ main {
   color: var(--brand-contrast);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+:where(h1, h2, h3, h4, h5, h6) {
   margin-block-end: var(--size-4);
   margin-inline: auto;
   text-align: center;
